@@ -1,6 +1,6 @@
 /**
- *    Weighted Index
- *    Copyright (C) 2017 Carl Barton, Tomasz Kociumaka, Chang Liu, Solon P. Pissis and Jakub Radoszewski.
+ *    ius: indexing uncertain strings
+ *    Copyright (C) 2023 E. Gabory, C. Liu, G. Loukides, S. P. Pissis, and W. Zuba.
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
  *    the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,6 @@
 #include <malloc.h>
 
 #include "input.h"
-//#include "weighted_sequence.h"
 #include "minimizer_index.h"
 #include "krfp.h"
 
@@ -35,29 +34,31 @@ using namespace std::chrono;
 
 using get_time = std::chrono::steady_clock;
 
-int main (int argc, char ** argv ) {
+int main (int argc, char ** argv ) 
+{
     	Settings st = decode_switches(argc, argv);
     	istream& text = st.text.is_open()?st.text:cin;
     	ostream& output_file = st.output.is_open()?st.output:cout;
 	int ell = st.ell;
 	
 	auto begin = get_time::now();
-	struct mallinfo2 mi;
-    	mi = mallinfo2();
-	auto begin_ram = mi.hblkhd + mi.uordblks;
+	//struct mallinfo2 mi;
+    	//mi = mallinfo2();
+	//auto begin_ram = mi.hblkhd + mi.uordblks;
 	
 	karp_rabin_hashing::init();
 	MinimizerIndex M;
 	text >> M;
     	M.build_index(st.z, ell);
-	mi = mallinfo2();
-	auto end_ram = mi.hblkhd + mi.uordblks;
+	//mi = mallinfo2();
+	//auto end_ram = mi.hblkhd + mi.uordblks;
 	auto end = get_time::now();
 	auto diff2 = end - begin;
 	output_file << "CT "<< chrono::duration_cast<chrono::milliseconds>(diff2).count()<<endl;	
-	output_file << "IS " << (end_ram-begin_ram)/1000000 << endl;
+	//output_file << "IS " << (end_ram-begin_ram)/1000000 << endl;
 
-	if(!st.patterns.empty()){		
+	if(!st.patterns.empty())
+	{		
 		int total_occ = 0;
 		begin = get_time::now();
 		
@@ -70,7 +71,7 @@ int main (int argc, char ** argv ) {
 			// output_file << pattern << ":";
 			std::vector<int> occs = M.GridMatch(pattern, ell, st.z);
 			// if (occs.empty()) {
-				// output_file << "\n";
+			// output_file << "\n";
 			// } else {
 				// for (auto p : occs) {
 					// output_file << p << " ";
