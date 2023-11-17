@@ -3,7 +3,7 @@ ius: indexing uncertain strings
 
 This repository hosts implementations of several algorithms for indexing uncertain (weighted) strings.
 
-These implementations assume Boost libraries are pre-installed on your system. On Ubuntu, e.g., via: 
+These implementations assume Boost libraries are pre-installed on your system. On Ubuntu, e.g., via:
 
 ```
 sudo apt install libboost-all-dev
