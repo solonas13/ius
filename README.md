@@ -1,7 +1,7 @@
 ius: indexing uncertain strings
 ===============================
 
-This repository hosts implementations of several algorithms for indexing uncertain (weighted) strings.
+Implementation of several algorithms for indexing uncertain (weighted) strings.
 
 Requirements
 ===
