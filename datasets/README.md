@@ -36,5 +36,7 @@ Second, compile using `make`
 ./index -t ./text/sars.in -z 256 -o ./patterns/sars.z256
 ./index -t ./text/sars.in -z 512 -o ./patterns/sars.z512
 ./index -t ./text/sars.in -z 1024 -o ./patterns/sars.z1024
+
+gzip *
 ```
-The patterns are saved in `patterns` folder.
+The patterns are saved in compressed form in `patterns` directory.
