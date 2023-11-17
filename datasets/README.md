@@ -17,7 +17,7 @@ gzip -dk chr22.in.gz
 cd ..
 ```
 Second, compile using `make` and execute the following to generate patterns
-of length in [64, 1024] for different z values as detailed below:
+of length in [64, 1024] for different z values:
 
 ```console
 
