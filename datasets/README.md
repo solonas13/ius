@@ -1,5 +1,5 @@
 Uncertain strings description
-=============================
+===
 
 The `text` directory contains 3 real uncertain strings:
 
@@ -8,7 +8,7 @@ The `text` directory contains 3 real uncertain strings:
 * The full genome of SARS-CoV-2 (isolate Wuhan-Hu-1) combined with a set of SNPs taken from 1181 samples [https://doi.org/10.7554/eLife.66857]. The length of the sequence (sars.in) is 29,903.
 
 Generating patterns with a certain z
-=============================
+===
 
 First, unzip the `chr22.in.gz` file
 ```console
