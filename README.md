@@ -26,7 +26,7 @@ make
 ./index -t ../datasets/text/sars.in -z 64 -p ../datasets/patterns/sars.z64p64.txt.gz -l 64 -o pm_time/sars_z64p64.txt
 ```
 
-For each index, a README file is included in the corresponding directory with further instructions on how to run.
+For each index, a README file is included in the corresponding directory with instructions on how to run.
 
 Citation
 ===
