@@ -1,17 +1,17 @@
-	/**
-    Weighted Suffix Array
-    Copyright (C) 2017 Panagiotis.Charalampopoulos, Costas.Iliopoulos, Chang.Liu, Solon.Pissis
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-**/
+/**
+ *    ius: indexing uncertain strings
+ *    Copyright (C) 2023 E. Gabory, C. Liu, G. Loukides, S. P. Pissis, and W. Zuba.
+ *    This program is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ **/
 
 #include <iostream>
 #include <cstdio>
@@ -41,7 +41,7 @@ using get_time = chrono::steady_clock;
 
 int main (int argc, char ** argv )
 {
-    Settings st = decode_switches(argc, argv);
+    	Settings st = decode_switches(argc, argv);
 	istream& text = st.text.is_open()?st.text:cin;
 	ostream& output_file = st.output.is_open()?st.output:cout;
 	ofstream result;
@@ -50,7 +50,7 @@ int main (int argc, char ** argv )
 	
 	auto begin = get_time::now();
 	// struct mallinfo2 mi;
-    // mi = mallinfo2();
+    	// mi = mallinfo2();
 	// double begin_ram = mi.hblkhd + mi.uordblks;
 	
 	karp_rabin_hashing::init();
@@ -69,7 +69,8 @@ int main (int argc, char ** argv )
 	output_file << "CT "<< chrono::duration_cast<chrono::milliseconds>(diff2).count()<<endl;	
 	// output_file << "CS " << (end_ram-begin_ram)/1000000 << endl;
 	
-if(!st.patterns.empty()){
+	if(!st.patterns.empty())
+	{
 		int total_occ = 0;
 		begin = get_time::now();		
 		ifstream file(st.patterns, std::ios_base::in | std::ios_base::binary);
@@ -81,14 +82,14 @@ if(!st.patterns.empty()){
 		for (string pattern; getline(patterns, pattern); ){
 			//cout << pattern << ":"<<endl;
 			std::vector<int> occs = M.occurrences(pattern, l, z, output_file);
-			if (occs.empty()) {
-				// output_file << "\n";
-			} else {
+			//if (occs.empty()) {
+			// output_file << "\n";
+			//} else {
 				// for (auto p : occs) {
 					// output_file << p << " ";
 				// }
 				// output_file << endl;
-			}
+			//}
 			total_occ += occs.size();
 		}
 		end = get_time::now();
