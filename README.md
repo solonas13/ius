@@ -12,7 +12,7 @@ Requirements
 Datasets
 ===
 
-To look at the the datasets, go to the `datasets` directory and follow the instructions there.
+To access the datasets, go to the `datasets` directory and follow the instructions there.
 
 
 How to run
