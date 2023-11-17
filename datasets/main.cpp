@@ -73,19 +73,15 @@ int main (int argc, char ** argv )
 	size_t Nz = fT.string().size();
 
 	int num_of_pattern = Nz/200;
-	ofstream pattern32(output+"p32.txt");
 	ofstream pattern64(output+"p64.txt");
 	ofstream pattern128(output+"p128.txt");
 	ofstream pattern256(output+"p256.txt");
 	ofstream pattern512(output+"p512.txt");
 	ofstream pattern1024(output+"p1024.txt");
-	ofstream pattern2048(output+"p2048.txt");
 	
 	srand(time(NULL));
 	size_t p = 0;
 	for(int i = 0; i < num_of_pattern; i++){
-		p = rand()%(Nz-3000);
-		pattern32 << zstrs.substr(p,32) << endl;
 		p = rand()%(Nz-3000);
 		pattern64 << zstrs.substr(p,64) << endl;
 		p = rand()%(Nz-3000);
@@ -96,8 +92,6 @@ int main (int argc, char ** argv )
 		pattern512 << zstrs.substr(p,512) << endl;
 		p = rand()%(Nz-3000);
 		pattern1024 << zstrs.substr(p,1024) << endl;
-		p = rand()%(Nz-3000);
-		pattern2048 << zstrs.substr(p,2048) << endl;
 	}
 		
 	
