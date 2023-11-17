@@ -16,9 +16,12 @@ cd text
 gzip -dk chr22.in.gz
 cd ..
 ```
-Second, compile using `make`
+Second, compile using `make` and execute the following:
 
 ```console
+
+mkdir patterns
+
 ./index -t ./text/chr22.in -z 2 -o ./patterns/chr22.z2
 ./index -t ./text/chr22.in -z 4 -o ./patterns/chr22.z4
 ./index -t ./text/chr22.in -z 8 -o ./patterns/chr22.z8
