@@ -11,8 +11,19 @@ Requirements
 ```
 sudo apt install libboost-all-dev
 ```
+How to run
+===
 
-When publishing work that is based on the results from ius please cite:
+To run, for example, the MWST-SE index, you can execute the following:
+
+```
+cd MWST-SE
+make
+./index -t ../datasets/text/sars.in -z 1024 -p ../datasets/patterns/sars.z64p64.txt -l 64 -o pm_time/sars_z64p64.txt
+```
+
+Citation
+===
 ```
 E. Gabory, C. Liu, G. Loukides, S. P. Pissis, and W. Zuba
 Space-Efficient Indexes for Uncertain Strings
