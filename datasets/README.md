@@ -19,12 +19,22 @@ cd ..
 Second, compile using `make`
 
 ```console
-./index -t ./text/chr22.in -z 32 -o ./patterns/z32
-./index -t ./text/chr22.in -z 64 -o ./patterns/z64
-./index -t ./text/chr22.in -z 128 -o ./patterns/z128
-./index -t ./text/chr22.in -z 256 -o ./patterns/z256
-./index -t ./text/chr22.in -z 512 -o ./patterns/z512
-./index -t ./text/chr22.in -z 1024 -o ./patterns/z1024
-./index -t ./text/chr22.in -z 2048 -o ./patterns/z2048
+./index -t ./text/chr22.in -z 2 -o ./patterns/chr22.z2
+./index -t ./text/chr22.in -z 4 -o ./patterns/chr22.z4
+./index -t ./text/chr22.in -z 8 -o ./patterns/chr22.z8
+./index -t ./text/chr22.in -z 16 -o ./patterns/chr22.z16
+./index -t ./text/chr22.in -z 32 -o ./patterns/chr22.z32
+
+./index -t ./text/efm.in -z 8 -o ./patterns/efm.z8
+./index -t ./text/efm.in -z 16 -o ./patterns/efm.z16
+./index -t ./text/efm.in -z 32 -o ./patterns/efm.z32
+./index -t ./text/efm.in -z 64 -o ./patterns/efm.z64
+./index -t ./text/efm.in -z 128 -o ./patterns/efm.z128
+
+./index -t ./text/sars.in -z 64 -o ./patterns/sars.z64
+./index -t ./text/sars.in -z 128 -o ./patterns/sars.z128
+./index -t ./text/sars.in -z 256 -o ./patterns/sars.z256
+./index -t ./text/sars.in -z 512 -o ./patterns/sars.z512
+./index -t ./text/sars.in -z 1024 -o ./patterns/sars.z1024
 ```
 The patterns are saved in `patterns` folder.
