@@ -1,4 +1,3 @@
-
 Uncertain sequence description
 ==============================
 
@@ -8,8 +7,8 @@ The text directory contains 3 real uncertain strings:
 * The full chromosome of Enterococcus faecium Aus0004 strain (CP003351) combined with a set of SNPs [4] taken from 1432 samples. The length of the sequence (efm.in) is 2955294.
 * The full genome of SARS-CoV-2 (isolate Wuhan-Hu-1) combined with a set of single nucleotide polymorphisms (SNPs) [2] taken from 1181 samples. The length of the sequence (sars.in) is 29903.
 
-Generating patters with a certain z
-===================================
+Generating patterns with a certain z
+==============================
 
 First, unzip the chr22.in.gz file
 ```console
