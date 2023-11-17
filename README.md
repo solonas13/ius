@@ -11,6 +11,13 @@ Requirements
 ```
 sudo apt install libboost-all-dev
 ```
+
+Datasets
+===
+
+To look at the the datasets, go to the `datasets' directory and follow the instructions there.
+
+
 How to run
 ===
 
