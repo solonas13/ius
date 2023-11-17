@@ -1,6 +1,8 @@
 ius: indexing uncertain strings
 ===============================
 
+This repository hosts implementations of several algorithms for indexing uncertain (weighted) strings.
+
 When publishing work that is based on the results from bd-anchors please cite:
 ```
 E. Gabory, C. Liu, G. Loukides, S. P. Pissis, and W. Zuba
