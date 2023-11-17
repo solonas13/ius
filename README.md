@@ -18,7 +18,7 @@ To access the datasets, go to the `datasets` directory and follow the instructio
 How to run
 ===
 
-To run, for example, the MWST-SE index, you can execute the following:
+To run, for example, the MWST-SE index, you can execute the following after creating the patterns:
 
 ```
 cd MWST-SE
