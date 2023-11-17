@@ -1,17 +1,17 @@
-	/**
-    Weighted Suffix Array
-    Copyright (C) 2017 Panagiotis.Charalampopoulos, Costas.Iliopoulos, Chang.Liu, Solon.Pissis
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-**/
+/**
+ *    ius: indexing uncertain strings
+ *    Copyright (C) 2023 E. Gabory, C. Liu, G. Loukides, S. P. Pissis, and W. Zuba.
+ *    This program is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ **/
 
 #include <iostream>
 #include <string>
@@ -74,9 +74,9 @@ int main (int argc, char ** argv )
 	ofstream result;
 	
 	auto begin = get_time::now();
-	struct mallinfo2 mi;
-    mi = mallinfo2();
-	double begin_ram = mi.hblkhd + mi.uordblks;
+	//struct mallinfo2 mi;
+    	//mi = mallinfo2();
+	//double begin_ram = mi.hblkhd + mi.uordblks;
 	
 	double z = st.z;
 	int ell = st.ell;
@@ -229,14 +229,14 @@ int main (int argc, char ** argv )
 	vector<point>().swap(points);
 
 		
-	mi = mallinfo2();
+	//mi = mallinfo2();
 	
-	double end_ram = mi.hblkhd + mi.uordblks;
+	//double end_ram = mi.hblkhd + mi.uordblks;
 	auto end = get_time::now();
 	auto diff2 = end - begin;
 	
 	output_file << "CT "<< chrono::duration_cast<chrono::milliseconds>(diff2).count()<< endl;	
-	output_file << "IS " << (end_ram-begin_ram)/1000000 << endl;
+	//output_file << "IS " << (end_ram-begin_ram)/1000000 << endl;
 
 	if(!st.patterns.empty()){
 		size_t total_occ_no = 0;
