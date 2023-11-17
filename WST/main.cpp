@@ -31,29 +31,30 @@ using namespace std;
 using namespace std::chrono;
 using get_time = std::chrono::steady_clock;
 
-int main (int argc, char ** argv ) {
+int main (int argc, char ** argv ) 
+{
     	Settings st = decode_switches(argc, argv);
 	istream& text = st.text.is_open()?st.text:cin;
     	string& pfile_prefix = st.patterns;
     	ostream& output = st.output.is_open()?st.output:cout;
 
 	auto begin = get_time::now();
-	struct mallinfo2 mi;
-    	mi = mallinfo2();
-	double begin_ram = mi.hblkhd + mi.uordblks;
+	//struct mallinfo2 mi;
+    	//mi = mallinfo2();
+	//double begin_ram = mi.hblkhd + mi.uordblks;
 
 	WeightedSequence W;
     	text >> W;
     	W.build_index(st.z, st.quiet, output);
 		
-	mi = mallinfo2();
-	double end_ram = mi.hblkhd + mi.uordblks;
+	//mi = mallinfo2();
+	//double end_ram = mi.hblkhd + mi.uordblks;
 
 	
 	auto end = get_time::now();
 	auto diff = end - begin;
 	output << "CT " << chrono::duration_cast<chrono::milliseconds>(diff).count() << endl;
-	output << "IS " << (end_ram-begin_ram)/1000000 << endl;
+	//output << "IS " << (end_ram-begin_ram)/1000000 << endl;
 		
 	string pfile_suffix[7] = {"p32.txt.gz","p64.txt.gz","p128.txt.gz","p256.txt.gz","p512.txt.gz","p1024.txt.gz","p2048.txt.gz"};
 	for(string ps : pfile_suffix){
