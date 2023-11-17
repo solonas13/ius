@@ -56,10 +56,11 @@ int main (int argc, char ** argv )
 	output << "CT " << chrono::duration_cast<chrono::milliseconds>(diff).count() << endl;
 	//output << "IS " << (end_ram-begin_ram)/1000000 << endl;
 		
-	string pfile_suffix[7] = {"p32.txt.gz","p64.txt.gz","p128.txt.gz","p256.txt.gz","p512.txt.gz","p1024.txt.gz","p2048.txt.gz"};
-	for(string ps : pfile_suffix){
-		string pfile = pfile_prefix + ps;
-		ifstream file(pfile, std::ios_base::in | std::ios_base::binary);
+	//string pfile_suffix[7] = {"p32.txt.gz","p64.txt.gz","p128.txt.gz","p256.txt.gz","p512.txt.gz","p1024.txt.gz","p2048.txt.gz"};
+	
+	if(!st.patterns.empty())
+	{
+		ifstream file(st.patterns, std::ios_base::in | std::ios_base::binary);
 		boost::iostreams::filtering_istream patterns;
 		patterns.push(boost::iostreams::gzip_decompressor());
 		patterns.push(file);		
