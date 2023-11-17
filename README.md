@@ -7,11 +7,7 @@ Requirements
 ===
 * A Linux system
 * A modern C++11 ready compiler such as g++ version 4.9 or higher
-* Boost libraries ready on your system. On Ubuntu, e.g., via:
-
-```
-sudo apt install libboost-all-dev
-```
+* Boost libraries ready on your system. On Ubuntu, e.g., via: `sudo apt install libboost-all-dev`
 
 Datasets
 ===
