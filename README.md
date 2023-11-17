@@ -26,7 +26,7 @@ To run, for example, the MWST-SE index, you can execute the following:
 ```
 cd MWST-SE
 make
-./index -t ../datasets/text/sars.in -z 1024 -p ../datasets/patterns/sars.z64p64.txt -l 64 -o pm_time/sars_z64p64.txt
+./index -t ../datasets/text/sars.in -z 64 -p ../datasets/patterns/sars.z64p64.txt -l 64 -o pm_time/sars_z64p64.txt
 ```
 
 Citation
