@@ -137,9 +137,9 @@ int main (int argc, char ** argv )
 	double z = st.z;
 	
 	auto begin = get_time::now();
-	struct mallinfo2 mi;
-    	mi = mallinfo2();
-	double begin_ram = mi.hblkhd + mi.uordblks;
+	//struct mallinfo2 mi;
+    	//mi = mallinfo2();
+	//double begin_ram = mi.hblkhd + mi.uordblks;
 	string alphabet;
 	vector<vector<double>> text;
 	
@@ -156,8 +156,8 @@ int main (int argc, char ** argv )
         }
         text.emplace_back(symbol);
     	}
-	mi = mallinfo2();
-	double rmq_space = mi.hblkhd + mi.uordblks;
+	//mi = mallinfo2();
+	//double rmq_space = mi.hblkhd + mi.uordblks;
 
 	Estimation fS(text, alphabet, z);
 	PropertyString fT;
@@ -189,22 +189,23 @@ int main (int argc, char ** argv )
 	vector<vector<double>>().swap(text);
 	vector<int>().swap(tmp_lcp);
 	
-	mi = mallinfo2();
+	//mi = mallinfo2();
 		
-	double end_ram = mi.hblkhd + mi.uordblks;
+	//double end_ram = mi.hblkhd + mi.uordblks;
 	auto end = get_time::now();
 	auto diff2 = end - begin;
 	output_file << "CT: "<< chrono::duration_cast<chrono::milliseconds>(diff2).count()<<endl;	
-	output_file << "IS: " << (end_ram-begin_ram)/1000000 << endl;
+	//output_file << "IS: " << (end_ram-begin_ram)/1000000 << endl;
 	
-	string pfile_suffix[7] = {"p32.txt.gz","p64.txt.gz","p128.txt.gz","p256.txt.gz","p512.txt.gz","p1024.txt.gz","p2048.txt.gz"};
-	for(string ps : pfile_suffix){	
-		string pfile = pfile_prefix + ps;
-		begin = get_time::now();
-		ifstream file(pfile, std::ios_base::in | std::ios_base::binary);
+	//string pfile_suffix[7] = {"p32.txt.gz","p64.txt.gz","p128.txt.gz","p256.txt.gz","p512.txt.gz","p1024.txt.gz","p2048.txt.gz"};
+	
+	if(!st.patterns.empty())
+	{
+		ifstream file(st.patterns, std::ios_base::in | std::ios_base::binary);
 		boost::iostreams::filtering_istream patterns;
 		patterns.push(boost::iostreams::gzip_decompressor());
 		patterns.push(file);		
+		begin = get_time::now();
 		size_t total_occ_no = 0;
 		for (string pattern; getline(patterns, pattern); ){
 			int m = pattern.size();
@@ -224,7 +225,7 @@ int main (int argc, char ** argv )
 		}
 		end = get_time::now();
 		auto diff3 = end - begin;
-		output_file << pfile << " PMT: "<< chrono::duration_cast<chrono::milliseconds>(diff3).count()<<"\n OCCS " << total_occ_no << endl;
+		output_file << "PMT: "<< chrono::duration_cast<chrono::milliseconds>(diff3).count()<<"\nOCCS: " << total_occ_no << endl;
 	}	
 	
 	return 0;
