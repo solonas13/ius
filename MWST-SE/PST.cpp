@@ -57,7 +57,7 @@ void PropertySuffixTree::stNode::split_edge(PropertySuffixTree::position const &
 
 //new build_suffix_tree
 void PropertySuffixTree::build_suffix_tree(list<pair<size_t,size_t>>& min_substrings) {
-    root = new stNode(text.end(), text.end()+1); //root has a pseudo-parent at depth -1 which is never accessed
+    root = new stNode(text.end(), text.end()+1);
     pair<size_t,size_t> curr_string,next_string;
     int curr_depth,depth1;
     stNode *curr_node;
@@ -65,16 +65,12 @@ void PropertySuffixTree::build_suffix_tree(list<pair<size_t,size_t>>& min_substr
     stack<stNode*> ancestors;
 	curr_node=root;
 	curr_string=make_pair(0,0); 
-	curr_depth=-1;
-	//for(list<pair<size_t,size_t>>::iterator minit=min_substrings.begin();minit!=min_substrings.end();++minit){
+	curr_depth=-1; //root has a pseudo-parent at depth -1 which is never accessed
 	while(min_substrings.size()>0){
 		next_string=min_substrings.front();
 		min_substrings.pop_front();
 		lcp=text.LCP(curr_string,next_string);
-		//cout<<"lcp="<<lcp<<endl;
-		//moving up the tree to the node that will be the parent of the new leaf
-		while(curr_depth>=lcp){
-			//cout <<"curr_depth="<<curr_depth<<endl;
+		while(curr_depth>=lcp){		//moving up the tree to the node that will be the parent of the new leaf
 			curr_node=ancestors.top();
 			ancestors.pop();
 			curr_depth -= curr_node->end - curr_node->begin;
@@ -149,6 +145,7 @@ vector<pair<int,double>> PropertySuffixTree::occurrences(string const& P){
 	return res;
 }
 
+//printout of the final structure (not used in the code)
 void PropertySuffixTree::dfs() {
     stack<stNode*> s;
     s.push(root);

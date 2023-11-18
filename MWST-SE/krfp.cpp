@@ -35,6 +35,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  **/
+ //WZ:Modified for the purpose of computing hashes of subsequent factors of length k faster
 
 #include <cstdio>
 #include <cstdlib>
@@ -55,6 +56,7 @@ namespace karp_rabin_hashing {
 // Base and exponent used in Karp-Rabin hashing.
 //=============================================================================
 std::uint64_t hash_variable;
+std::uint64_t hash_power_k;
 std::uint64_t mersenne_prime_exponent;
 std::uint64_t inverse;
 
@@ -193,6 +195,28 @@ std::uint64_t leftshift(const std::uint64_t hash){
 	return mul_mod_mersenne(hash, inverse, mersenne_prime_exponent);
 }
 
+std::uint64_t concat_k(//here we assume, that right_len is a constant passed during initialization
+    const std::uint64_t left_hash,
+    const std::uint64_t right_hash) {
+  const std::uint64_t tmp = mul_mod_mersenne(
+      left_hash, hash_power_k, mersenne_prime_exponent);
+  const std::uint64_t ret = mod_mersenne(
+      tmp + right_hash, mersenne_prime_exponent);
+  return ret;
+}
+
+
+std::uint64_t subtract_k( //here we assume, that right_len is a constant passed during initialization
+    const std::uint64_t long_hash,
+    const std::uint64_t short_hash) {
+  const std::uint64_t tmp = mul_mod_mersenne(
+      short_hash, hash_power_k, mersenne_prime_exponent);
+  const std::uint64_t p = ((std::uint64_t)1 << mersenne_prime_exponent) - 1;
+  return (long_hash >= tmp) ?
+    (long_hash - tmp) :
+    ((long_hash + p) - tmp);
+}
+
 
 //computation of the inverse of hash_variable
 void compute_inverse(){
@@ -214,10 +238,11 @@ void compute_inverse(){
 //=============================================================================
 // Initialize the base and exponent for Karp-Rabin hashing.
 //=============================================================================
-void init() {
+void init(uint64_t k) {
   mersenne_prime_exponent = 61; //do not change this
   hash_variable = rand_mod_mersenne(mersenne_prime_exponent);
   compute_inverse();
+  hash_power_k = pow_mod_mersenne(hash_variable, k, mersenne_prime_exponent);
 }
 }
 

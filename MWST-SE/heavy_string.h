@@ -18,10 +18,8 @@ using namespace std;
 
 class HeavyString{
 	std::string H;
-	std::map<size_t, char> _alt;
+	std::map<size_t, char> _alt; //here we use map, as elements when multiple elements are accessed they are often close in the structure - the difference in time is noticable
 	std::unordered_map<size_t, double> delta_pi;
-	std::unordered_map<size_t, std::vector<int>> alt_pos;
-	std::unordered_map<size_t, std::pair<int, int>> alt_ext;
 	std::vector<double> pi_prefix;
 
 	public:
@@ -34,30 +32,21 @@ class HeavyString{
 			H = S;
 			n=S.size();
 			N= n* min_list.size();
-			//cout<< "trying to copy pi pref"<<endl;
 			pi_prefix=pi_pref;
-			//cout <<"copy made"<<endl;
-			//cout <<endl;
 			list<pair<int,char>> diff;
 			vector<double> pi_arr;
-			//cout<< "array created"<<endl;
 			pi_arr.push_back(pi_prefix[0]);
-			//cout <<"pi_prefix range "<<pi_prefix[n-1]<<endl;
 			for(int i=1;i<n;++i){
-				//cout <<"pi arr computation "<< i <<endl;
 				pi_arr.push_back(pi_prefix[i]-pi_prefix[i-1]);
 			}
-			//cout<< "pi array built"<<endl;
 			size_t i=0;
 			list<pair<size_t,size_t>>::iterator minit=min_list.begin();
 			for(list<pair<size_t,size_t>>::iterator minit=min_list.begin(); minit!=min_list.end();++minit){
-				//cout <<"storing minimizer "<< i <<endl;
 				diff=diffs.front();
 				diffs.pop_front();
 				for(list<pair<int,char>>::iterator el=diff.begin();el!=diff.end();++el){
 					double this_pi = log2(P[el->first][A.find(el->second)]);
 					_alt[i*n+(size_t)el->first]=el->second;
-					alt_pos[minit->first].push_back(i*n+(size_t)el->first);
 					delta_pi[i*n+(size_t)el->first] =  this_pi - pi_arr[el->first];	
 				}
 				++i;
@@ -99,12 +88,6 @@ class HeavyString{
 			substring[alt_iter->first-pos]=alt_iter->second;
 			++alt_iter;
 		}
-		//for(size_t i = 0; i < len; i++){
-		//	if(_alt.count(pos+i)){
-				//substring[i] = _alt.at(pos+i);
-		//	}
-		//}
-
 		return substring;
 	}
 	
@@ -119,7 +102,7 @@ class HeavyString{
 		    HeavyString * _Heavy1;
 	};
 	
-	int LCP(pair<size_t,size_t> min_str1,pair<size_t,size_t> min_str2){ //TODO maybe we can make faster LCP provided an LCP on the Heavy string  - here it is done in time linear to the string lengths
+	int LCP(pair<size_t,size_t> min_str1,pair<size_t,size_t> min_str2){ //In theory using a blackbox LCP structure for the heavy string H improves the running time, but in practice the linear time comparison of strings is more efficient
 		string str1=substr(min_str1.first,min_str1.second-min_str1.first);
 		string str2=substr(min_str2.first,min_str2.second-min_str2.first);
 		int len=min(str1.length(),str2.length());
@@ -140,24 +123,16 @@ class HeavyString{
 		}else{
 			weight=pi_prefix[pos%n+len-1];
 		}
-		//cout<<"base weight: " <<weight<<endl;
+	
 		for(size_t i = 0; i < len; i++){
-			if(_alt.count(pos+i)){
+			if(delta_pi.count(pos+i)){
 				weight+= delta_pi.at(pos+i);
-				//cout<< "modified at pos "<< pos+i<< " by "<<delta_pi.at(pos+i)<<endl;
 			}
-		}
+		}		
+		
 		return weight;
 	}
 	
-	
-	size_t le(size_t i){
-		return alt_ext[i].first;
-	}
-	
-	size_t re(size_t i){
-		return alt_ext[i].second;
-	}
 	
 	size_t length() const {return N;}
 	size_t heavy_length() const {return n;}

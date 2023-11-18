@@ -27,7 +27,7 @@ class PropertySuffixTree {
     typedef HeavyString::const_iterator position;
     struct stNode {
         stNode* suf_link;
-        map<char, stNode*> children; // TODO we only use ordered map so that the dfs output is deterministic
+        map<char, stNode*> children;
         position begin, end;
         list<size_t> minimizers;
         
@@ -42,15 +42,14 @@ class PropertySuffixTree {
     
     void build_suffix_tree(list<pair<size_t,size_t>> &min_substrings);
     friend std::ostream& operator<< (std::ostream &out, PropertySuffixTree const &st);
+    stNode* find(string const &P);
     
 public:
     HeavyString text;
 
    PropertySuffixTree(HeavyString const& H, list<pair<size_t,size_t>> &min_substrings);
    
-   stNode* find(string const &P);
     vector<pair<int,double>> occurrences(string const &s);
-	double get_pi(int i, int begin, int length);
 	double naive_check(string const & pat, int p_begin, int t_begin, int length, int c);
 	void dfs();
     ~PropertySuffixTree();
