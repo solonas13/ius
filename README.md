@@ -19,7 +19,8 @@ datasets and a tool to simulate patterns from a given dataset (uncertain string)
 How to run
 ===
 
-To index, for example, the SARS dataset, you can execute the following after creating the patterns:
+To index, for example, the SARS dataset, and perform pattern matching you can execute the following after creating 
+the patterns:
 
 ```
 cd MWST-SE
