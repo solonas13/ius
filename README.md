@@ -20,8 +20,8 @@ Here is the supported format of uncertain strings:
 29903
 ACGT
 1 0 0 0
-0 0 0.5 0.5
 0.1 0.3 0.3 0.3
+0 0 0.5 0.5
 ...
 ```
 
