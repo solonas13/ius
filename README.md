@@ -25,7 +25,8 @@ ACGT
 ...
 ```
 
-The first line is the number n of distributions; the second line is the alphabet Σ; the subsequent lines are the distributions. 
+The first line is the number n of distributions; the second line is the alphabet Σ; the subsequent n lines are 
+the distributions of Σ. 
 
 To access our datasets, go to the `datasets` directory and follow the instructions there. We provide three real
 datasets and a tool to simulate patterns from a given dataset (uncertain string). 
