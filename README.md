@@ -5,7 +5,7 @@ This repository maintains the implementation of several new algorithms for <b>in
 
 Requirements
 ===
-* A Linux system
+* A GNU/Linux system
 * A modern C++11 ready compiler such as g++ version 4.9 or higher
 * Boost libraries ready on your system. On Ubuntu, e.g., via: `sudo apt install libboost-all-dev`
 
