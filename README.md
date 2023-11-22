@@ -3,7 +3,7 @@ ius: indexing uncertain strings
 
 This repository maintains the implementation of several new algorithms for <b>indexing uncertain (weighted) strings</b>.
 An uncertain string of length n over an alphabet Σ is a sequence of n distributions of Σ. Importantly, our indexes work
-for any alphabet Σ and are not negatively affected when the alphabet size grows.
+for any alphabet Σ and are not negatively affected when the alphabet size |Σ| grows.
 
 Requirements
 ===
