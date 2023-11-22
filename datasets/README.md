@@ -21,7 +21,7 @@ ACGT
 The first line is the number n of distributions; the second line is the alphabet Σ; the subsequent n lines are 
 the distributions of Σ. 
 
-Generating patterns with a certain z
+Generating patterns with a probability threshold 1/z
 ===
 
 First, unzip the `chr22.in.gz` file
