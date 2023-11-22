@@ -12,7 +12,7 @@ Requirements
 Datasets
 ===
 
-To access the datasets, go to the `datasets` directory and follow the instructions there. We provide three real
+To access our datasets, go to the `datasets` directory and follow the instructions there. We provide three real
 datasets and a tool to simulate patterns from a given dataset (uncertain string). 
 
 
