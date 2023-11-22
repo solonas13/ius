@@ -7,9 +7,6 @@ The `text` directory contains 3 real uncertain strings:
 * The full chromosome of Enterococcus faecium Aus0004 strain (CP003351) combined with a set of SNPs taken from 1432 samples [https://doi.org/10.1038/s42003-022-03194-2]. The length of the sequence (efm.in) is 2,955,294.
 * The full genome of SARS-CoV-2 (isolate Wuhan-Hu-1) combined with a set of SNPs taken from 1181 samples [https://doi.org/10.7554/eLife.66857]. The length of the sequence (sars.in) is 29,903.
 
-Text
-===
-
 Here is the supported format of uncertain strings:
 
 ```
