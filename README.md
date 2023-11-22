@@ -19,7 +19,7 @@ datasets and a tool to simulate patterns from a given dataset (uncertain string)
 How to run
 ===
 
-To index, for example, the SARS dataset, and perform pattern matching you can execute the following after creating 
+To index, for example, the SARS‑CoV‑2 dataset, and perform pattern matching you can execute the following after creating 
 the patterns:
 
 ```
