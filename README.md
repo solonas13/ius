@@ -36,7 +36,7 @@ How to run
 ===
 
 To index, for example, the SARS‑CoV‑2 dataset, and perform pattern matching you can execute the following after creating 
-the patterns:
+the patterns in compressed form (.gz):
 
 ```
 cd MWST-SE
