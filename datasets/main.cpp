@@ -67,12 +67,12 @@ int main (int argc, char ** argv )
 		fT += s;
 	}
 	
-
 	fS.clear();
 	string zstrs = fT.string();
 	size_t Nz = fT.string().size();
 
 	int num_of_pattern = Nz/200;
+	if ( num_of_pattern <= 0 ) { cerr << " Error: N.z is too small to generate long patterns! " << endl; throw 1;}
 	ofstream pattern64(output+"p64.txt");
 	ofstream pattern128(output+"p128.txt");
 	ofstream pattern256(output+"p256.txt");
@@ -81,20 +81,20 @@ int main (int argc, char ** argv )
 	
 	srand(time(NULL));
 	size_t p = 0;
+	int pos = Nz - 3000; 
+	if ( pos <= 0 ) { cerr << " Error: N.z is too small to generate long patterns! " << endl; throw 1; }
 	for(int i = 0; i < num_of_pattern; i++){
-		p = rand()%(Nz-3000);
+		p = rand()%(pos);
 		pattern64 << zstrs.substr(p,64) << endl;
-		p = rand()%(Nz-3000);
+		p = rand()%(pos);
 		pattern128 << zstrs.substr(p,128) << endl;
-		p = rand()%(Nz-3000);
+		p = rand()%(pos);
 		pattern256 << zstrs.substr(p,256) << endl;
-		p = rand()%(Nz-3000);
+		p = rand()%(pos);
 		pattern512 << zstrs.substr(p,512) << endl;
-		p = rand()%(Nz-3000);
+		p = rand()%(pos);
 		pattern1024 << zstrs.substr(p,1024) << endl;
 	}
-		
-	
 	
 	return 0;
 }
