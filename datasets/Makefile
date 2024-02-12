@@ -2,7 +2,7 @@ MF=     Makefile
  
 CC=     g++
  
-CFLAGS= -g -fopenmp -msse4.2 -fomit-frame-pointer -funroll-loops 
+CFLAGS= -fopenmp -msse4.2 -fomit-frame-pointer -funroll-loops 
  
 LFLAGS= -std=c++11 -O3 -DNDEBUG -Wl,-rpath=$(PWD)/libsdsl/lib
 
