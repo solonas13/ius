@@ -49,18 +49,18 @@ int main (int argc, char ** argv )
 			sum += symbol[j];
 		}
 		if (abs(sum-1) > EPS) {
-			cerr << "Probabilities at position " << i << " do not sum up to 1" << endl;
+			cerr << " Error: Probabilities at position " << i << " do not sum up to 1!" << endl;
 			throw 1;
 		}
 		text.emplace_back(symbol);
 	}
-	cout << "finish read" << endl;
+	cout << "Finish reading the input" << endl;
 	cout << N << endl;
 	cout << alphabet << endl;
 	cout << text.size() << endl;
 	
 	Estimation fS(text, alphabet, z);
-			cout << "z-strings constructed" << endl;
+	cout << "The z-strings are constructed" << endl;
 	PropertyString fT;
 	
 	for(PropertyString const & s : fS.strings()){
@@ -72,7 +72,7 @@ int main (int argc, char ** argv )
 	size_t Nz = fT.string().size();
 
 	int num_of_pattern = Nz/200;
-	if ( num_of_pattern <= 0 ) { cerr << " Error: N.z is too small to generate long patterns! " << endl; throw 1;}
+	if ( num_of_pattern <= 0 ) { cerr << " Error: n * z is too small to generate long patterns! " << endl; throw 1;}
 	ofstream pattern64(output+"p64.txt");
 	ofstream pattern128(output+"p128.txt");
 	ofstream pattern256(output+"p256.txt");
@@ -81,8 +81,8 @@ int main (int argc, char ** argv )
 	
 	srand(time(NULL));
 	size_t p = 0;
-	int pos = Nz - 3000; 
-	if ( pos <= 0 ) { cerr << " Error: N.z is too small to generate long patterns! " << endl; throw 1; }
+	int pos = Nz - 2000; 
+	if ( pos <= 0 ) { cerr << " Error: n * z is too small to generate long patterns! " << endl; throw 1; }
 	for(int i = 0; i < num_of_pattern; i++){
 		p = rand()%(pos);
 		pattern64 << zstrs.substr(p,64) << endl;
