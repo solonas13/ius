@@ -24,7 +24,7 @@ the distributions of Σ.
 Generating patterns with a probability threshold 1/z
 ===
 
-First, unzip the `chr22.in.gz` file
+We show this for the chr22 dataset. First, unzip the `chr22.in.gz` file
 ```console
 cd text
 gzip -dk chr22.in.gz
@@ -42,18 +42,6 @@ mkdir patterns
 ./index -t ./text/chr22.in -z 8 -o ./patterns/chr22.z8
 ./index -t ./text/chr22.in -z 16 -o ./patterns/chr22.z16
 ./index -t ./text/chr22.in -z 32 -o ./patterns/chr22.z32
-
-./index -t ./text/efm.in -z 8 -o ./patterns/efm.z8
-./index -t ./text/efm.in -z 16 -o ./patterns/efm.z16
-./index -t ./text/efm.in -z 32 -o ./patterns/efm.z32
-./index -t ./text/efm.in -z 64 -o ./patterns/efm.z64
-./index -t ./text/efm.in -z 128 -o ./patterns/efm.z128
-
-./index -t ./text/sars.in -z 64 -o ./patterns/sars.z64
-./index -t ./text/sars.in -z 128 -o ./patterns/sars.z128
-./index -t ./text/sars.in -z 256 -o ./patterns/sars.z256
-./index -t ./text/sars.in -z 512 -o ./patterns/sars.z512
-./index -t ./text/sars.in -z 1024 -o ./patterns/sars.z1024
 
 gzip *
 ```
