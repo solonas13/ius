@@ -128,7 +128,8 @@ void extention ( vector<vector<double>>& text, string& s, string& alph, vector<i
 
 int main (int argc, char ** argv )
 {
-    	Settings st = decode_switches(argc, argv);
+
+	Settings st = decode_switches(argc, argv);
 	istream& text_file = st.text.is_open()?st.text:cin;
 	ostream& output_file = st.output.is_open()?st.output:cout;
     	string& pfile_prefix = st.patterns;
@@ -179,7 +180,6 @@ int main (int argc, char ** argv )
 	vector<int>().swap(le);
 	fT._pi = re;
 	
-	begin = get_time::now();
 	// maximalSF(text, zstrs, Nz, N, z, ME);
 	SA_LCP_index ( text, zstrs.c_str(), Nz, N, z, SA, LCP );
 	union_find_resort ( SA, LCP, re.data(), Nz );
@@ -196,7 +196,6 @@ int main (int argc, char ** argv )
 	auto diff2 = end - begin;
 	output_file << "CT: "<< chrono::duration_cast<chrono::milliseconds>(diff2).count()<<endl;	
 	//output_file << "IS: " << (end_ram-begin_ram)/1000000 << endl;
-	
 	//string pfile_suffix[7] = {"p32.txt.gz","p64.txt.gz","p128.txt.gz","p256.txt.gz","p512.txt.gz","p1024.txt.gz","p2048.txt.gz"};
 	
 	if(!st.patterns.empty())
