@@ -4,7 +4,7 @@ ius: indexing uncertain strings
 This repository maintains the implementation of several new algorithms for <b>indexing uncertain (weighted) strings</b>.
 An uncertain string of length n over an alphabet Σ is a sequence of n distributions of Σ. Importantly, our indexing schemes 
 work for any ASCII alphabet Σ and are not negatively affected when the alphabet size |Σ| grows; the only overhead in this
-case, would be to read the file in memory.
+case, would be to read the input file in memory.
 
 Requirements
 ===
