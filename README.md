@@ -52,7 +52,7 @@ Citation
 ```
 E. Gabory, C. Liu, G. Loukides, S. P. Pissis, and W. Zuba
 Space-Efficient Indexes for Uncertain Strings
-(submitted manuscript)
+ICDE 2024
 ```
 
 <b>License</b>: GNU GPLv3 License; Copyright (C) 2023 E. Gabory, C. Liu, G. Loukides, S. P. Pissis, and W. Zuba.
